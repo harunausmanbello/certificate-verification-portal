@@ -10,7 +10,7 @@ if (loggedin()) {
 
     if (!isLoginSessionExpired()) {
 
-        if ($auth->role == 'admin') {
+        if ($auth->role == 'admin' || $auth->role == 'staff') {
 
             $userQeury = "SELECT * FROM masters";
             $user = $con->prepare($userQeury);
@@ -28,7 +28,7 @@ if (loggedin()) {
 <head>
 
     <?php include(__DIR__ . '/../../../include/header/head.php'); ?>
-    <title> Dashboard | <?= $_ENV['APP_NAME'] ;?> </title>
+    <title> Manage Masters Student | <?= $_ENV['APP_NAME'] ;?> </title>
 
 </head>
 
@@ -59,7 +59,8 @@ if (loggedin()) {
                                 <nav style="--falcon-breadcrumb-divider: '»';" aria-label="breadcrumb">
                                     <ol class="breadcrumb float-sm-end">
                                         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Manage User</li>
+                                        <li class="breadcrumb-item"><a href="/admin/manage/student/type">Type</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Manage</li>
                                     </ol>
                                 </nav>
                             </div><!-- /.col -->
@@ -74,7 +75,7 @@ if (loggedin()) {
                         <div class="sticky-sidebar top-navbar-height d-flex flex-column">
                             <div class="card mb-lg-3 order-lg-0 order-1">
                                 <div class="card-header bg-300 py-2 d-flex">
-                                    <h5 class="mb-0">Manage User</h5>
+                                    <h5 class="mb-0">Manage  Masters Student</h5>
                                 </div>
                                 <div class="card-body">
 
@@ -95,7 +96,7 @@ if (loggedin()) {
                                                     <?php foreach( $userData as $data) {?>
                                                     <tr>
                                                         <td><?= $sn; ?></td>
-                                                        <td><?= strtoupper($data['fname'] .' '. $data['lname'] .' '. $data['mname']) ; ?>
+                                                        <td><?= strtoupper($data['fullname']) ; ?>
                                                         </td>
                                                         <td><?= strtoupper($data['regno']); ?></td>
                                                         <td><?= strtoupper($data['refno']); ?></td>

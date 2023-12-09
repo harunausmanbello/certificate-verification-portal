@@ -45,6 +45,7 @@ if ( loggedin() ) {
 }
 
 function isLoginSessionExpired() {
+    
     $login_session_duration = getenv( 'APP_SESSION' );
 
     $current_time = time();

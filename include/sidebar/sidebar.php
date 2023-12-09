@@ -34,6 +34,7 @@
                     </a>
 
                 </li>
+                <?php if($auth->role == 'admin') { ?>
                 <li class="nav-item">
                     <!-- parent pages-->
                     <a class="nav-link dropdown-indicator " href="#user" role="button" data-bs-toggle="collapse"
@@ -58,6 +59,7 @@
 
                     </ul>
                 </li>
+                <?php } ?>
                 <li class="nav-item">
                     <!-- parent pages-->
                     <a class="nav-link dropdown-indicator " href="#student" role="button" data-bs-toggle="collapse"

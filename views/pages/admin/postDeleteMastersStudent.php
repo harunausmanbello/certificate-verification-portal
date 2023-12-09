@@ -10,7 +10,7 @@ if (loggedin()) {
 
     if (!isLoginSessionExpired()) {
 
-        if ($auth->role == 'admin') {
+        if ($auth->role == 'admin' || $auth->role == 'staff') {
 
             $userId = filter_input(INPUT_POST, 'userId');
 

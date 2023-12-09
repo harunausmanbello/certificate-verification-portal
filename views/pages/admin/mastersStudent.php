@@ -10,7 +10,7 @@ if (loggedin()) {
 
     if (!isLoginSessionExpired()) {
 
-        if ($auth->role == 'admin') {
+        if ($auth->role == 'admin' || $auth->role == 'staff') {
 
 ?>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ if (loggedin()) {
 <head>
 
     <?php include(__DIR__ . '/../../../include/header/head.php'); ?>
-    <title> Dashboard | <?= $_ENV['APP_NAME'] ;?> </title>
+    <title> Add Masters Student | <?= $_ENV['APP_NAME'] ;?> </title>
 
 </head>
 
@@ -53,7 +53,7 @@ if (loggedin()) {
                                     <ol class="breadcrumb float-sm-end">
                                         <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
                                         <li class="breadcrumb-item"><a href="/admin/add/student/type">Type</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Add Masters</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Add </li>
                                     </ol>
                                 </nav>
                             </div><!-- /.col -->
@@ -74,23 +74,12 @@ if (loggedin()) {
                                 <form action="" method="post" id="mastersStudent">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-sm-4 mb-3"><label class="form-label" for="fname">FirstName
+                                            <div class="col-sm-12 mb-3"><label class="form-label" for="fullname">FullName
                                                     <span class="text-danger">*</span></label><input
-                                                    class="form-control" name="fname" id="fname" type="text"
+                                                    class="form-control" name="fullname" id="fullname" type="text"
                                                     placeholder="" required="required">
                                             </div>
-                                            <div class="col-sm-4 mb-3"><label class="form-label"
-                                                    for="mname">MiddleName(Othername)
-                                                    <span class="text-danger">*</span></label><input
-                                                    class="form-control" name="mname" id="mname" type="text"
-                                                    placeholder="">
-                                            </div>
-                                            <div class="col-sm-4 mb-3"><label class="form-label"
-                                                    for="lname">LastName(Surname)
-                                                    <span class="text-danger">*</span></label><input
-                                                    class="form-control" name="lname" id="lname" type="text"
-                                                    placeholder="" required="required">
-                                            </div>
+                                            
 
                                         </div>
 

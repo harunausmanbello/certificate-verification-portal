@@ -10,11 +10,9 @@ if (loggedin()) {
 
     if (!isLoginSessionExpired()) {
 
-        if ($auth->role == 'admin') {
+        if ($auth->role == 'admin' || $auth->role == 'staff') {
 
-            $fname = filter_input(INPUT_POST, 'fname');
-            $mname = filter_input(INPUT_POST, 'mname');
-            $lname = filter_input(INPUT_POST, 'lname');
+            $fullname = filter_input(INPUT_POST, 'fullname');
             $dept = filter_input(INPUT_POST, 'dept');
             $grade = filter_input(INPUT_POST, 'grade');
             $matric = filter_input(INPUT_POST, 'regno');
@@ -24,7 +22,7 @@ if (loggedin()) {
             $status = 'graduate';
            
 
-            if ((isset($fname) && !empty($fname)) && (isset($lname) && !empty($lname)) && (isset($dept) && !empty($dept)) &&
+            if ((isset($fullname) && !empty($fullname))  && (isset($dept) && !empty($dept)) &&
              (isset($grade) && !empty($grade)) && (isset($matric) && !empty($matric)) && (isset($ref) && !empty($ref)) && (isset($year) && !empty($year))
             ) {
 
@@ -44,12 +42,10 @@ if (loggedin()) {
                     ]);
                 } else {
 
-                    $addQeury = "INSERT INTO bachelor (fname, mname, lname, department, grade, regno, refno, year, program, status) 
-                    VALUES (:fname, :mname, :lname, :department, :grade, :regno, :refno, :year, :program, :status)";
+                    $addQeury = "INSERT INTO bachelor (fullname, department, grade, regno, refno, year, program, status) 
+                    VALUES (:fullname, :department, :grade, :regno, :refno, :year, :program, :status)";
                     $add = $con->prepare($addQeury);
-                    $add->bindParam(':fname', $fname, PDO::PARAM_STR);
-                    $add->bindParam(':mname', $mname, PDO::PARAM_STR);
-                    $add->bindParam(':lname', $lname, PDO::PARAM_STR);
+                    $add->bindParam(':fullname', $fullname, PDO::PARAM_STR);
                     $add->bindParam(':department', $dept, PDO::PARAM_STR);
                     $add->bindParam(':grade', $grade, PDO::PARAM_STR);
                     $add->bindParam(':regno', $matric, PDO::PARAM_STR);

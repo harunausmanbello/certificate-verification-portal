@@ -8,6 +8,7 @@ require_once('core/usercore.php');
 
 if (loggedin()) {
 
+    
     header('Location: /admin/logout');
 
 } else { ?>

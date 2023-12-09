@@ -10,7 +10,7 @@ if (loggedin()) {
 
     if (!isLoginSessionExpired()) {
 
-        if ($auth->role == 'admin') {
+        if ($auth->role == 'admin' || $auth->role == 'staff') {
             
 
 ?>
@@ -52,7 +52,7 @@ if (loggedin()) {
                             <div class="col-sm-6 px-0">
                                 <nav style="--falcon-breadcrumb-divider: '»';" aria-label="breadcrumb">
                                     <ol class="breadcrumb float-sm-end">
-                                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                        <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Student Type</li>
                                     </ol>
                                 </nav>

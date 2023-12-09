@@ -28,7 +28,7 @@ if (loggedin()) {
 <head>
 
     <?php include(__DIR__ . '/../../../include/header/head.php'); ?>
-    <title> Dashboard | <?= $_ENV['APP_NAME'] ;?> </title>
+    <title> Manage User | <?= $_ENV['APP_NAME'] ;?> </title>
 
 </head>
 
@@ -58,7 +58,7 @@ if (loggedin()) {
                             <div class="col-sm-6 px-0">
                                 <nav style="--falcon-breadcrumb-divider: '»';" aria-label="breadcrumb">
                                     <ol class="breadcrumb float-sm-end">
-                                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                        <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Manage User</li>
                                     </ol>
                                 </nav>

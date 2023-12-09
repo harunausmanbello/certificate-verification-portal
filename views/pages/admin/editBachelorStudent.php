@@ -10,7 +10,7 @@ if (loggedin()) {
 
     if (!isLoginSessionExpired()) {
 
-        if ($auth->role == 'admin') {
+        if ($auth->role == 'admin' || $auth->role == 'staff') {
 
             $id = filter_input(INPUT_GET,'id');
 
@@ -30,7 +30,7 @@ if (loggedin()) {
 <head>
 
     <?php include(__DIR__ . '/../../../include/header/head.php'); ?>
-    <title> Dashboard | <?= $_ENV['APP_NAME'] ;?> </title>
+    <title> Edit Bachelor Student | <?= $_ENV['APP_NAME'] ;?> </title>
 
 </head>
 
@@ -61,8 +61,8 @@ if (loggedin()) {
                                 <nav style="--falcon-breadcrumb-divider: '»';" aria-label="breadcrumb">
                                     <ol class="breadcrumb float-sm-end">
                                         <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
-                                        <li class="breadcrumb-item"><a href="/admin/add/student/type">Type</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Add Bachelor</li>
+                                        <li class="breadcrumb-item"><a href="/admin/manage/student/bachelor">Manage</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
                                     </ol>
                                 </nav>
                             </div><!-- /.col -->
@@ -78,7 +78,7 @@ if (loggedin()) {
                         <div class="sticky-sidebar top-navbar-height d-flex flex-column">
                             <div class="card mb-lg-3 order-lg-0 order-1">
                                 <div class="card-header bg-300 py-2 d-flex">
-                                    <h5 class="mb-0">Add Bachelor Student</h5>
+                                    <h5 class="mb-0">Edit Bachelor Student</h5>
                                 </div>
                                 <form action="" method="post" id="editbachelorStudent">
                                     <div class="card-body">
@@ -86,24 +86,13 @@ if (loggedin()) {
                                             <input type="hidden" value="<?= $userData->id;?>" name="id">
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-4 mb-3"><label class="form-label"
-                                                    for="fname">FirstName
+                                            <div class="col-sm-12 mb-3"><label class="form-label"
+                                                    for="fullname">FullName
                                                     <span class="text-danger">*</span></label><input
-                                                    class="form-control" value="<?= $userData->fname; ?>" name="fname" id="fname" type="text"
+                                                    class="form-control" value="<?= strtoupper($userData->fullname); ?>" name="fullname" id="fullname" type="text"
                                                     placeholder="" required="required">
                                             </div>
-                                            <div class="col-sm-4 mb-3"><label class="form-label"
-                                                    for="mname">MiddleName(Othername)
-                                                    <span class="text-danger">*</span></label><input
-                                                    class="form-control" value="<?= $userData->mname; ?>" name="mname" id="mname" type="text"
-                                                    placeholder="" >
-                                            </div>
-                                            <div class="col-sm-4 mb-3"><label class="form-label"
-                                                    for="lname">LastName(Surname)
-                                                    <span class="text-danger">*</span></label><input
-                                                    class="form-control" value="<?= $userData->lname; ?>" name="lname" id="lname" type="text"
-                                                    placeholder="" required="required">
-                                            </div>
+                                            
 
                                         </div>
 
@@ -112,7 +101,7 @@ if (loggedin()) {
                                                     for="dept">Department
                                                     <span class="text-danger">*</span></label><input
                                                     class="form-control" name="dept" id="dept" type="text"
-                                                    placeholder="" value="<?= $userData->department; ?>" required="required">
+                                                    placeholder="" value="<?= strtoupper($userData->department); ?>" required="required">
                                             </div>
                                             <div class="col-sm-4 mb-3">
                                                 <label for="organizerSingle">Grade <span
@@ -135,14 +124,14 @@ if (loggedin()) {
                                             <div class="col-sm-4 mb-3"><label class="form-label"
                                                     for="regno">Matric Number
                                                     <span class="text-danger">*</span></label><input
-                                                    class="form-control" value="<?= $userData->regno; ?>" name="regno" id="regno" type="text"
+                                                    class="form-control" value="<?= strtoupper($userData->regno); ?>" name="regno" id="regno" type="text"
                                                     placeholder="0086CSC2122" required="required">
                                             </div>
                                             <div class="col-sm-4 mb-3"><label class="form-label" for="refno">Ref
                                                     Number
                                                     <span class="text-danger">*</span></label><input
                                                     class="form-control" name="refno" id="refno" type="text"
-                                                    placeholder="B12345" value="<?= $userData->refno; ?>" required="required">
+                                                    placeholder="B12345" value="<?= strtoupper($userData->refno); ?>" required="required">
                                             </div>
                                             <div class="col-sm-4 mb-3"><label class="form-label" for="year">Year
                                                     of Graduation

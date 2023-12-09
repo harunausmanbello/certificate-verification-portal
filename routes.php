@@ -75,8 +75,8 @@ post('/admin/student/masters/delete', 'views/pages/admin/postDeleteMastersStuden
 
 //student site
 
-get('/student/certicate/verification', 'views/pages/student/index.php');
-post('/student/details/verify', 'views/pages/student/verify.php');
+get('/verify-certificate', 'views/pages/student/index.php');
+post('/certicate/verification', 'views/pages/student/verify.php');
 
 
 
